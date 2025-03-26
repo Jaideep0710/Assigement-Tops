@@ -1,0 +1,183 @@
+1)  create table contact(
+    -> ContactID int auto_increment primary key,
+    -> companyId int,
+    -> firstName varchar(45),
+    -> LastName varchar(45),
+    -> Street varchar(45),
+    -> City Varchar(45),
+    -> State varchar(2),
+    -> Zip varchar(10),
+    -> Ismain Boolean,
+    -> Email varchar(45),
+    -> phone Varchar(12),
+    -> Foreign key(companyID) references Company(companyID));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> desc contact;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| ContactID | int         | NO   | PRI | NULL    | auto_increment |
+| companyId | int         | YES  | MUL | NULL    |                |
+| firstName | varchar(45) | YES  |     | NULL    |                |
+| LastName  | varchar(45) | YES  |     | NULL    |                |
+| Street    | varchar(45) | YES  |     | NULL    |                |
+| City      | varchar(45) | YES  |     | NULL    |                |
+| State     | varchar(2)  | YES  |     | NULL    |                |
+| Zip       | varchar(10) | YES  |     | NULL    |                |
+| Ismain    | tinyint(1)  | YES  |     | NULL    |                |
+| Email     | varchar(45) | YES  |     | NULL    |                |
+| phone     | varchar(12) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+11 rows in set (0.00 sec)
+
+2)create table employee(
+    -> EmployeeID int auto_increment primary key,
+    -> firstname varchar(45),
+    -> lastname varchar(45),
+    -> salary Decimal(10,2),
+    -> Hiredate Date,
+    -> Jobtitle Varchar(25),
+    -> Email varchar(25),
+    -> phone Varchar(12));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc employee;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| EmployeeID | int           | NO   | PRI | NULL    | auto_increment |
+| firstname  | varchar(45)   | YES  |     | NULL    |                |
+| lastname   | varchar(45)   | YES  |     | NULL    |                |
+| salary     | decimal(10,2) | YES  |     | NULL    |                |
+| Hiredate   | date          | YES  |     | NULL    |                |
+| Jobtitle   | varchar(25)   | YES  |     | NULL    |                |
+| Email      | varchar(25)   | YES  |     | NULL    |                |
+| phone      | varchar(12)   | YES  |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+3) create table contactemployee(
+    -> contactEmployeeID Int auto_increment primary key,
+    -> ContactId int,
+    -> employeeID int,
+    -> ContactDate Date,
+    -> Description varchar(100),
+    -> foreign key(contantId) references contant(contantID),
+    -> foreign key(employeeid) references employee(EmployeeId));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc contactEmployee;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| contactEmployeeID | int          | NO   | PRI | NULL    | auto_increment |
+| ContactId         | int          | YES  | MUL | NULL    |                |
+| employeeID        | int          | YES  | MUL | NULL    |                |
+| ContactDate       | date         | YES  |     | NULL    |                |
+| Description       | varchar(100) | YES  |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+4)  update employee set phone = '215-555-8800' where employeeID=303;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++------------+-----------+----------+----------+------------+-------------------+-----------------------+--------------+
+| EmployeeID | FirstName | LastName | Salary   | HireDate   | JobTitle          | Email                 | Phone        |
++------------+-----------+----------+----------+------------+-------------------+-----------------------+--------------+
+|        301 | Rakesh    | Patel    | 25000.00 | 2021-06-15 | Data Analyst      | Rakesh@gmail.com      | 4569871230   |
+|        302 | Jayesh    | Patel    | 30000.00 | 2020-07-10 | Software Engineer | jayeshpatel@gmail.com | 3698521470   |
+|        303 | Mukesh    | Patel    | 35000.00 | 2025-01-01 | Project Manager   | Mukesh@gmail.com      | 215-555-8800 |
++------------+-----------+----------+----------+------------+-------------------+-----------------------+--------------+
+3 rows in set (0.00 sec)
+
+5)  update company set companyname='Urban Outfitters' where companyname ='IT se
+ctor';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from company;
++-----------+------------------+----------+----------+-------+--------+
+| CompanyId | CompanyName      | street   | City     | state | zip    |
++-----------+------------------+----------+----------+-------+--------+
+|       101 | Solar ABC        | 12 Gorwa | Vadodara | GJ    | 390003 |
+|       102 | Textile xyz      | 12 Gotri | Vadodara | GJ    | 391101 |
+|       103 | Urban Outfitters | 12 Gotri | Vadodara | GJ    | 391101 |
++-----------+------------------+----------+----------+-------+--------+
+3 rows in set (0.00 sec)
+
+6) delete from contactemployee
+    -> where contactID= (select contactId from contact where firstName ='Ramesh' and lastname ='Patil')
+    -> and employeeId = (select employeeID from employee where firstName = 'Mukesh' and lastname ='patel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from contactemployee;
++-------------------+-----------+------------+-------------+-------------------+
+| ContactEmployeeID | ContactID | EmployeeID | ContactDate | Description       |
++-------------------+-----------+------------+-------------+-------------------+
+|               401 |       201 |        301 | 2024-02-15  | Project Discuss   |
+|               402 |       202 |        302 | 2024-01-01  | System Requriment |
++-------------------+-----------+------------+-------------+-------------------+
+2 rows in set (0.00 sec)
+
+7) What is the significance of “%” and “_” operators in the LIKE statement?
+--> The % and _ operator in sql like statement help with pattern matching  the data in table or column to serach the data that match.
+ Example- select * from Employee where  firstname like  'J%';
+FirstName start with J like Jaideep,Jai,etc;
+
+(_) underscores --> matches exactly one character in table
+select * from employee where firstName Like 'J_i';
+firstName is like Jai.
+
+8) Explain normalization in the context of databases. 
+--> Normalization is the process of organizing a database to remove duplicate data and improve efficiency.
+ It helps in reducing data redundancy and maintaining data integrity by breaking large tables into smaller related tables.
+
+  --> Normalization 3 Levels forms
+       1NF - 1Normal forms
+       2NF - 2Normal forms
+       3NF - 3Normal Forms
+
+9) What does a join in MySQL mean?
+--> A Join in SQL is used to combine data from two or more tables based on a related column and 
+   by using Foreign key. 
+
+  There are more joins 
+  1) inner join --> In which only common data will show, combines data only where there is a match in both tables.
+  2) Left join --> It return all rows from the left table and only the matching rows from the right table.If there is no match,it returns NULL for the right table.
+  3) right Join --> It returns all rows from the right table and only the matching rows from the left table. If there is no match,it returns NULL for the left table.
+
+10)  What do you understand about DDL, DCL, and DML in MySQL?
+--> DCL- Data Definition Language 
+   1)create -It use create the new databases,table
+   2)alter - It use update,add,remove,change column Name
+   3)Drop - It use to drop the table,databases
+   4)truncate - It use delete all records from table.
+  
+   DML (Data Manipulation Language)
+  1)Insert -Add new record in table
+  2)update - It modify the record from existing table
+  3)delete - Remove the record from table
+
+  DCL- (Data Control Language)
+ 1) Grant - Gives specific permissions to a user or role
+ 2) Revoke - Remove specific permissions from a user or role
+
+ TCL -(Transaction Control Language)
+ 1)commit - Saves all changes made in the current table
+ 2) RollBack - Rollback is used to undo changes made in a transaction before a  is executed
+
+ DQL -(data query Language)
+ select - Retrieves data from one or more tables
+
+11) What is the role of the MySQL JOIN clause in a query, and what are some common types of joins?
+  --> A Join in SQL is used to combine data from two or more tables based on a related column and 
+   by using Foreign key. 
+
+  There are more joins 
+  1) inner join --> In which only common data will show, combines data only where there is a match in both tables.
+  2) Left join --> It return all rows from the left table and only the matching rows from the right table.If there is no match,it returns NULL for the right table.
+  3) right Join --> It returns all rows from the right table and only the matching rows from the left table. If there is no match,it returns NULL for the left table.
+  4) Full outer join -->All rows from both tables.
