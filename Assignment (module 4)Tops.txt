@@ -181,3 +181,11 @@ firstName is like Jai.
   2) Left join --> It return all rows from the left table and only the matching rows from the right table.If there is no match,it returns NULL for the right table.
   3) right Join --> It returns all rows from the right table and only the matching rows from the left table. If there is no match,it returns NULL for the left table.
   4) Full outer join -->All rows from both tables.
+
+12)  select E.firstname,E.lastname,E.employeeID
+     from employee E inner join contactemployee CE
+    ON E.employeeID=CE.employeeID  inner join 
+    contact c ON CE.contactID=c.contactID
+    inner join company CP ON c.companyID=CP.companyID
+    where CP.CompanyName="Solar ABC";
+  -->Rakesh	Patel	301
