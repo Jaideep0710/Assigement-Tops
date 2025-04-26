@@ -1,6 +1,6 @@
 1)What are the types of Applications?
 ->Applications are types of software created to perform specific tasks. Using Python, we can develop many types of applications, such as:
-•Web application: Websites or online platforms (e.g., built using Flask or Django).
+•Web application: Websites or online platforms.
 •Desktop GUI Application: Software with graphical user interfaces like calculators or notepad.
 •Command-Line Application: Programs that run in the terminal without a GUI.
 •Mobile Applications: Apps for Android and iOS.
