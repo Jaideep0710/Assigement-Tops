@@ -1,0 +1,316 @@
+1)What are the types of Applications?
+->Applications are types of software created to perform specific tasks. Using Python, we can develop many types of applications, such as:
+•Web application: Websites or online platforms (e.g., built using Flask or Django).
+•Desktop GUI Application: Software with graphical user interfaces like calculators or notepad.
+•Command-Line Application: Programs that run in the terminal without a GUI.
+•Mobile Applications: Apps for Android and iOS.
+
+2)What is programming?
+   ->Programming is the process of writing instructions (code) that a computer can understand and follow to perform specific tasks. 
+It allows us to create software, automate work, solve problems, and build applications. 
+Programming languages like Python, Java, or C++ are used to write these instructions.
+     
+3)what is python?
+-> Python is a high-level, easy-to-learn, and powerful programming language. It is known for its simple syntax, readability, 
+and wide range of uses. Python is used in web development, data science, automation, artificial intelligence, 
+game development, and more. It is a popular choice for both beginners and professionals.
+
+
+4) Write a Python program to check if a number is positive, negative or zero.
+
+-> num=input("enter the number")
+   if num.isdigit():
+   	 num=int(num)
+    	if num==0:
+        	print("The enter number is zero")
+    	elif(num>0):
+        	print("The enter number is positive")
+    	elif(num<0):
+        	print("The enter number is negative")
+   else:
+        print("Invalid data")
+
+
+5)Write a Python program to get the Factorial number of given numbers.
+->n=int(input("enter the number"))
+	factorial=1
+	i=1
+	while i<=n:
+    	factorial *=i
+    	i+=1
+	print(f"the factorial of {n} is {factorial}")
+
+
+6)Write a Python program to get the Fibonacci series of given range.
+
+->n=int(input("enter the number"))
+	a,b=0,1
+	print("Fibonacci series",n)
+	while a <=n:
+    	print(a,end=" ")
+    	a,b = b, a+b
+
+7)How memory is managed in Python?
+->
+   1)Automatic: Python manages memory for you — no manual work needed.
+   2)Heap Storage: All objects are stored in a special area called the            
+   heap.
+   3)Reference Counting: Python tracks how many variables point to each 
+   object.
+   4)Garbage Collector: Removes unused objects from memory automatically.
+
+8)What is the purpose continuing statement in python?
+->The continue statement is used inside loops (for or while) to skip the rest of the code for the current loop iteration and move to the next iteration.
+
+9)Write python program that swap two number with temp variable
+and without temp variable. 
+-># without temp
+ 	a=10
+	b=20
+	print(f"before swap without temp: {a,b}")
+	a,b=b,a
+	print(f"After swap without temp:{a,b}")
+
+# withtemp
+	x=30
+	y=40
+	print(f"Before swap with temp:{x,y}")
+	temp=x
+	x=y
+	y=temp
+	print(f"After swap with temp:{x,y}")
+
+10)Write a Python program to find whether a given number is even or odd, print out an appropriate message to the user. 
+
+-> user= int(input("enter the number"))
+	if user==0:
+   	   print("the number should not be zero")
+	elif(user %2==0):
+    	   print(f"The number is even:{user}")
+	else:
+   	   print(f"The number is odd:{user}")
+
+11)Write a Python program to test whether a passed letter is a vowel or not.
+->user=input("enter the vowel").lower()
+	if len(user)==1:
+    	 if user in ["a","e","i","o","u"]:
+               print(f"This is vowel:{user}:")
+   	 else:
+               print("this not vowel")
+
+12) Write a Python program to sum of three given integers. However, if two values are equal sum will be zero.
+->a = int(input("enter the number"))
+ b = int(input("enter the number"))
+ c = int(input("enter the number"))
+ if a==b or b==c or c==a:
+    print(f"The total is sum:{0}")
+ else:
+    total=a+b+c
+    print(f"The total is:{total}")
+
+13) Write a Python program that will return true if the two given integer values are equal or their sum or difference is 5.
+->a=int(input("enter the number"))
+b=int(input("enter the number"))
+if a==b or (a+b==5) or (a-b==5):
+    print(True)
+else:
+    print(False)
+
+14)Write a python program to sum of the first n positive integers. 
+->n=int(input("enter the number"))
+
+if n<=0:
+    print("Enter the positive number")
+else:
+    total=0
+    i=1
+    while i<=n:
+        total+=i
+        i+=1
+    print(f"The total  {n} is: {total}")
+
+15)Write a Python program to calculate the length of a string.
+->n=input("enter the strig")
+  length=len(n)
+  print(length)
+
+16)Write a Python program to count the number of characters
+(character frequency) in a string 
+-> n=input("enter the characters")
+  if n.isalpha():
+    
+    length=len(n)
+    print(length)
+ else:
+    print("Enter the characters")
+
+17)What are negative indexes and why are they used? 
+->negative indexes are a way to access elements from the end of a list, string, or other sequences.
+ ex -1 is the last element,-2 is the second last.
+ Negative indexing is used to access elements from the end of a list or string.
+It saves time when you don't know the length or want the last few items.
+It's cleaner and easier than calculating the index from the end manually.
+ex list[-1] gives the last element directly
+
+18) )Write a Python program to count occurrences of a substring in a string. 
+->text="hello program world"
+substring="hello"
+count=text.count(substring)
+print("occurrences:",count)
+
+19)Write a Python program to count the occurrences of each word in a given sentence.
+->text="hello python world"
+
+words = text.split()
+word_count = {}
+
+for word in words:
+    if word in word_count:
+        word_count[word] += 1
+    else:
+        word_count[word] = 1
+
+print("total  occurrences:", word_count)
+
+20) Write a Python program to get a single string from two given strings,separated by a space and swap the first two characters of each string.
+-> text1= "Welcome"
+text2= "Back"
+newstr1 = text2[:2] + text1[2:]
+newstr2 = text1[:2] + text2[2:]
+res=  newstr1 + " " + newstr2
+print("result:",res)
+
+
+21) Write a Python program to add 'in' at the end of a given string (length
+should be at least 3). If the given string already ends with 'ing' then
+add 'ly' instead if the string length of the given string is less than 3,
+leave it unchanged.
+->n=input("enter the characters")
+if n.isalpha():
+    if len(n)<3:
+        print(n)
+    elif n.endswith('ing'):
+        print(n +'ly')
+    else:
+        print(n+'ing')
+else:
+    print("Enter the characters")
+
+22)Write a Python function to reverses a string if its length is a multiple
+of 4. 
+-> def reverse(n):
+    if len(n)%4==0:
+        reverses=" "
+        for char in n:
+            reverses=char+reverses
+        return reverses
+    else:
+        return n
+n=input("enter the string")
+res=reverse(n)
+print(res)
+
+23) Write a Python program to get a string made of the first 2 and the last
+2 chars from a given a string. If the string length is less than 2, return
+instead of the empty string. 
+->
+n=input("enter the string")
+if len(n)<2:
+    result=""
+else:
+    first=n[0] + n[1]
+    last=n[-2] + n[-1]
+    result=first +last
+
+print("Result:",result)
+
+24)Write a Python function to insert a string in the middle of a string. .
+-> n = input("Enter the string: ")
+insert = input("Enter the string to insert: ")
+middle = len(n) // 2
+result = ""
+for i in range(len(n)):
+    if i == middle:
+        result += insert
+    result += n[i]
+
+print(result)
+
+25)What is List? How will you reverse a list?
+->
+A list is a collection of items (like numbers, strings, or even other lists) that is ordered, changeable (mutable), and allows duplicates.
+n=int(input("enter the number"))
+list=[]
+for i in range(n):
+    lst=input("enter the number".format(i+1))
+    list.append(lst)
+    list.sort(reverse=True)
+print(list)
+
+26)How will you remove last object from a list? 
+-> By using of pop method it use remove  last items from list.
+list=[10,20,30,40,50]
+list.pop()
+print(list)
+
+27) Suppose list1 is [2, 33, 222, 14, and 25], what is list1 [-1]?
+-> last[-1] It will be  answer 25.
+list1=[2, 33, 222, 14,25]
+print(list1[-1]) 
+
+28) Differentiate between append () and extend () methods? 
+-> Append() is used to add items to the end of a list.
+   Extend() is used to add elements from an iterable (like a list, string, or tuple) to the end of a list.
+
+29) Write a Python function to get the largest number, smallest num and sum of all from a list.
+->def list(numbers):
+    if not numbers:
+        return "The list is empty."
+
+    largest = max(numbers)
+    smallest = min(numbers)
+    total = sum(numbers)
+
+    return largest, smallest, total
+my_list = [5, 10, 15, 20]
+largest, smallest, total = list(my_list)
+
+print("Largest:", largest)
+print("Smallest:", smallest)
+print("Sum:", total)
+
+30)How will you compare two lists? 
+->if they have the same elements in the same order. If the order doesn't matter, see if they contain the same set of elements. 
+list1=[10,20,30]
+list2=[10,20,30]
+print(list1==list2)
+
+
+31)Write a Python program to count the number of strings where the string
+length is 2 or more and the first and last character are same from a given list
+of strings.
+->words=["Anna","bob","sky"]
+count=0
+matching=[]
+for word in words:
+    if len(word) and word[0].lower() == word[-1].lower():
+            count+=1
+            matching.append(word)
+print(f"number of string matching:",count , "The matching word", matching)
+
+32)Write a Python program to remove duplicates from a list. 
+->list=[10,20,30,30,50,40,10,40]
+data=[]
+for i in list:
+    if i not in data:
+        data.append(i)
+print(data)
+
+33)Write a Python program to check a list is empty or not.
+->n=[10,20,30]
+if not n:
+    print("The list empty")
+else:
+    print("The list have data")
+
+
