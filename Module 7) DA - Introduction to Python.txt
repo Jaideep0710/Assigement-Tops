@@ -17,19 +17,13 @@ game development, and more. It is a popular choice for both beginners and profes
 
 
 4) Write a Python program to check if a number is positive, negative or zero.
-
--> num=input("enter the number")
-   if num.isdigit():
-   	 num=int(num)
-    	if num==0:
-        	print("The enter number is zero")
-    	elif(num>0):
-        	print("The enter number is positive")
-    	elif(num<0):
-        	print("The enter number is negative")
-   else:
-        print("Invalid data")
-
+-> num=int(input("enter the number"))
+  if num==0:
+	print("The enter number is zero")
+  elif(num>0):
+        print("The enter number is positive")
+  else:
+        print("The enter number is negative")
 
 5)Write a Python program to get the Factorial number of given numbers.
 ->n=int(input("enter the number"))
